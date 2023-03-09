@@ -550,8 +550,7 @@ class SynopsysBridge {
                 if (validationErrors.length > 0) {
                     (0, core_1.error)(new Error(validationErrors.join(',')));
                 }
-                (0, core_1.info)('diagnostics flag: '.concat(inputs.INCLUDE_DIAGNOSTICS));
-                if (inputs.INCLUDE_DIAGNOSTICS) {
+                if (process.env['INCLUDE_DIAGNOSTICS']) {
                     formattedCommand = formattedCommand.concat(tools_parameter_1.SynopsysToolsParameter.SPACE).concat(tools_parameter_1.SynopsysToolsParameter.DIAGNOSTICS_OPTION);
                 }
                 (0, core_1.debug)('Formatted command is - '.concat(formattedCommand));

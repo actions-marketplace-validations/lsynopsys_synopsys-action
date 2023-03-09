@@ -71,12 +71,17 @@ jobs:
       # Optional 
       #- name: Include diagnostics
       #  uses: actions/upload-artifact@v3
-      #  if: ${{ failure() || env.INCLUDE_DIAGNOSTICS }}
+      #  if: ${{ failure() && env.INCLUDE_DIAGNOSTICS }}
       #  with:
       #    # If a path (or paths), result in no files being found for the artifact, the action will succeed but print out a warning.
+      #    # Single Path 
       #    path: ${{ github.workspace }}/.bridge/
+      #    # Multiple Paths 
+      #    path: |
+      #       ${{ github.workspace }}/.bridge/
+      #       /home/runner/user/.bridge/
       #    name: bridge_diagnostics
-      #    # Artifacts are retained for 90 days by default
+      #    # Optional Artifacts are retained for 90 days by default
       #    retention-days: 10
 ```
 
@@ -144,12 +149,17 @@ jobs:
       # Optional 
       #- name: Include diagnostics
       #  uses: actions/upload-artifact@v3
-      #  if: ${{ failure() || env.INCLUDE_DIAGNOSTICS }}
+      #  if: ${{ failure() && env.INCLUDE_DIAGNOSTICS }}
       #  with:
       #    # If a path (or paths), result in no files being found for the artifact, the action will succeed but print out a warning.
+      #    # Single Path 
       #    path: ${{ github.workspace }}/.bridge/
+      #    # Multiple Paths 
+      #    path: |
+      #       ${{ github.workspace }}/.bridge/
+      #       /home/runner/user/.bridge/
       #    name: bridge_diagnostics
-      #    # Artifacts are retained for 90 days by default
+      #    # Optional Artifacts are retained for 90 days by default
       #    retention-days: 10
 ```
 
@@ -225,12 +235,17 @@ jobs:
       # Optional 
       #- name: Include diagnostics
       #  uses: actions/upload-artifact@v3
-      #  if: ${{ failure() || env.INCLUDE_DIAGNOSTICS }}
+      #  if: ${{ failure() && env.INCLUDE_DIAGNOSTICS }}
       #  with:
       #    # If a path (or paths), result in no files being found for the artifact, the action will succeed but print out a warning.
+      #    # Single Path 
       #    path: ${{ github.workspace }}/.bridge/
+      #    # Multiple Paths 
+      #    path: |
+      #       ${{ github.workspace }}/.bridge/
+      #       /home/runner/user/.bridge/
       #    name: bridge_diagnostics
-      #    # Artifacts are retained for 90 days by default
+      #    # Optional Artifacts are retained for 90 days by default
       #    retention-days: 10
 ```
 
@@ -244,7 +259,7 @@ jobs:
 
 - **bridge_download_version** - Provide bridge version. If provided, the specified version of Synopsys Bridge will be downloaded and configured.
 
-- **include_diagnostics** - If provided, diagnostics files will be zipped and downloadable. [Note - Diagnostics Artifacts are enabled by default if there is any failure and Diagnostics Artifacts are retained for 90 days by default] 
+- **INCLUDE_DIAGNOSTICS** - If provided, diagnostics files will be zipped and downloadable. [Note - Diagnostics Artifacts are enabled by when this variable has passed, retained for 90 days by default if retention-days is not passed and INCLUDE_DIAGNOSTICS should be defined under "env" section.]
 
 [Note - If **bridge_download_version** or **bridge_download_url** is not provided, Synopsys Action will download and configure the latest version of Bridge]
 
